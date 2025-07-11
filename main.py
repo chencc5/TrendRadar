@@ -2596,6 +2596,17 @@ class NewsAnalyzer:
             "weibo",
             "douyin",
             "zhihu",
+            # 新增数据源
+            ("coolapk", "酷安"),
+            ("v2ex", "V2EX"),
+            ("ithome", "IT之家"),
+            ("sspai", "少数派"),
+            ("juejin", "稀土掘金"),
+            ("chongbuluo", "虫部落"),
+            ("cankaoxiaoxi", "参考消息"),
+            ("zaobao", "联合早报"),
+            ("sputniknewscn", "卫星通讯社"),
+            ("kaopu", "靠谱消息"),
         ]
 
         print(f"开始爬取数据，请求间隔 {self.request_interval} 毫秒")
