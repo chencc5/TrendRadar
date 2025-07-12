@@ -4,7 +4,7 @@ import json
 import time
 import random
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 import webbrowser
 from typing import Dict, List, Tuple, Optional, Union
 from pathlib import Path
@@ -31,6 +31,20 @@ CONFIG = {
     # 适用场景：1.高频监控(≤30分钟间隔) 2.实时热点追踪 3.只关心新话题而非持续热度
     "MESSAGE_BATCH_SIZE": 4000,  # 消息分批大小（字节）
     "BATCH_SEND_INTERVAL": 1,  # 批次发送间隔（秒）
+    # 智能频率和去重配置
+    "SMART_FREQUENCY": True,  # 启用智能频率控制和内容去重
+    "SIMILARITY_THRESHOLD": 0.35,  # 标题相似度阈值(0-1)，超过此值认为重复
+    "DEDUP_TIME_WINDOW": 6,  # 去重时间窗口(小时)，此时间内相似内容只推送一次
+    "QUIET_HOURS": [23, 7],  # 静默时间段[开始小时, 结束小时]，此时间段内不推送
+    "WORK_HOURS": [9, 18],  # 工作时间段[开始小时, 结束小时]，用于GitHub Actions频率控制
+    "MAX_PUSH_ITEMS": 15,  # 单次推送最大条目数，避免信息过载
+    "AUTO_CLEANUP_DAYS": 2,  # 自动清理N天前的历史文件，0表示不清理
+    # 智能频率说明：
+    # - GitHub Actions已配置为工作时间每2小时运行，非工作时间每4小时运行
+    # - 静默时间段内程序仍会运行但不发送通知，只生成HTML报告
+    # - 相似度检测基于编辑距离算法，可有效识别同一事件的不同表述
+    # - 去重历史记录保存在output/dedup_history.json，会自动清理过期记录
+    # - 历史文件自动清理：保留最近N天的文件，避免仓库体积过大
     # 飞书机器人的 webhook URL
     "FEISHU_WEBHOOK_URL": "",
     # 钉钉机器人的 webhook URL
@@ -63,6 +77,174 @@ class TimeHelper:
     @staticmethod
     def format_time_filename() -> str:
         return TimeHelper.get_beijing_time().strftime("%H时%M分")
+
+    @staticmethod
+    def is_in_quiet_hours() -> bool:
+        """检查当前是否在静默时间段内"""
+        if not CONFIG["SMART_FREQUENCY"]:
+            return False
+
+        current_hour = TimeHelper.get_beijing_time().hour
+        quiet_start, quiet_end = CONFIG["QUIET_HOURS"]
+
+        if quiet_start <= quiet_end:
+            # 正常时间段，如 [23, 7] 表示 23:00-07:00
+            return quiet_start <= current_hour <= quiet_end
+        else:
+            # 跨天时间段，如 [23, 7] 表示 23:00-次日07:00
+            return current_hour >= quiet_start or current_hour <= quiet_end
+
+    @staticmethod
+    def is_in_work_hours() -> bool:
+        """检查当前是否在工作时间段内"""
+        if not CONFIG["SMART_FREQUENCY"]:
+            return True
+
+        current_hour = TimeHelper.get_beijing_time().hour
+        work_start, work_end = CONFIG["WORK_HOURS"]
+        return work_start <= current_hour <= work_end
+
+    @staticmethod
+    def should_skip_push() -> bool:
+        """根据智能频率控制判断是否应该跳过推送"""
+        if not CONFIG["SMART_FREQUENCY"]:
+            return False
+
+        # 静默时间段内跳过推送
+        if TimeHelper.is_in_quiet_hours():
+            print(f"当前处于静默时间段 {CONFIG['QUIET_HOURS']}，跳过推送")
+            return True
+
+        return False
+
+
+class SimilarityHelper:
+    """相似度计算工具"""
+
+    @staticmethod
+    def calculate_similarity(text1: str, text2: str) -> float:
+        """计算两个文本的相似度（优化的中文新闻标题算法）"""
+        if not text1 or not text2:
+            return 0.0
+
+        # 预处理：去除标点符号、空格，转小写
+        def preprocess(text):
+            # 去除常见标点符号和空格
+            text = re.sub(r'[，。！？：；""''（）【】《》、\s]+', '', text.lower())
+            return text
+
+        text1_clean = preprocess(text1)
+        text2_clean = preprocess(text2)
+
+        if text1_clean == text2_clean:
+            return 1.0
+
+        # 提取关键词进行比较
+        keywords1 = SimilarityHelper._extract_keywords(text1)
+        keywords2 = SimilarityHelper._extract_keywords(text2)
+
+        # 计算关键词重叠度
+        keyword_similarity = SimilarityHelper._calculate_keyword_similarity(keywords1, keywords2)
+
+        # 计算编辑距离相似度
+        distance = SimilarityHelper._edit_distance(text1_clean, text2_clean)
+        max_len = max(len(text1_clean), len(text2_clean))
+
+        if max_len == 0:
+            return 1.0
+
+        edit_similarity = 1.0 - (distance / max_len)
+
+        # 综合相似度：关键词相似度权重70%，编辑距离权重30%
+        final_similarity = keyword_similarity * 0.7 + edit_similarity * 0.3
+
+        return max(0.0, min(1.0, final_similarity))
+
+    @staticmethod
+    def _extract_keywords(text: str) -> set:
+        """提取文本中的关键词"""
+        # 去除标点符号
+        text = re.sub(r'[，。！？：；""''（）【】《》、\s]+', ' ', text)
+
+        # 简单的关键词提取：长度>=2的词
+        words = []
+        for i in range(len(text)):
+            for j in range(i+2, min(i+6, len(text)+1)):  # 提取2-5字的词
+                word = text[i:j]
+                if len(word) >= 2:
+                    words.append(word)
+
+        return set(words)
+
+    @staticmethod
+    def _calculate_keyword_similarity(keywords1: set, keywords2: set) -> float:
+        """计算关键词集合的相似度"""
+        if not keywords1 and not keywords2:
+            return 1.0
+        if not keywords1 or not keywords2:
+            return 0.0
+
+        intersection = keywords1.intersection(keywords2)
+        union = keywords1.union(keywords2)
+
+        return len(intersection) / len(union) if union else 0.0
+
+    @staticmethod
+    def _edit_distance(s1: str, s2: str) -> int:
+        """计算编辑距离（动态规划）"""
+        m, n = len(s1), len(s2)
+
+        # 创建DP表
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+
+        # 初始化
+        for i in range(m + 1):
+            dp[i][0] = i
+        for j in range(n + 1):
+            dp[0][j] = j
+
+        # 填充DP表
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                if s1[i-1] == s2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]
+                else:
+                    dp[i][j] = min(
+                        dp[i-1][j] + 1,    # 删除
+                        dp[i][j-1] + 1,    # 插入
+                        dp[i-1][j-1] + 1   # 替换
+                    )
+
+        return dp[m][n]
+
+    @staticmethod
+    def is_similar(text1: str, text2: str, threshold: float = None) -> bool:
+        """判断两个文本是否相似"""
+        if threshold is None:
+            threshold = CONFIG["SIMILARITY_THRESHOLD"]
+
+        similarity = SimilarityHelper.calculate_similarity(text1, text2)
+        return similarity >= threshold
+
+    @staticmethod
+    def find_similar_titles(new_titles: List[str], existing_titles: List[str],
+                          threshold: float = None) -> Dict[str, List[str]]:
+        """找出新标题中与已有标题相似的项目"""
+        if threshold is None:
+            threshold = CONFIG["SIMILARITY_THRESHOLD"]
+
+        similar_pairs = {}
+
+        for new_title in new_titles:
+            similar_existing = []
+            for existing_title in existing_titles:
+                if SimilarityHelper.is_similar(new_title, existing_title, threshold):
+                    similar_existing.append(existing_title)
+
+            if similar_existing:
+                similar_pairs[new_title] = similar_existing
+
+        return similar_pairs
 
 
 class VersionChecker:
@@ -145,6 +327,115 @@ class FileHelper:
         output_dir = Path("output") / date_folder / subfolder
         FileHelper.ensure_directory_exists(str(output_dir))
         return str(output_dir / filename)
+
+    @staticmethod
+    def cleanup_old_files() -> None:
+        """清理过期的历史文件"""
+        cleanup_days = CONFIG["AUTO_CLEANUP_DAYS"]
+        if cleanup_days <= 0:
+            return
+
+        output_dir = Path("output")
+        if not output_dir.exists():
+            return
+
+        current_time = TimeHelper.get_beijing_time()
+        cutoff_date = current_time - timedelta(days=cleanup_days)
+
+        deleted_count = 0
+        total_size = 0
+
+        print(f"开始清理 {cleanup_days} 天前的历史文件...")
+
+        # 遍历output目录下的日期文件夹
+        for date_folder in output_dir.iterdir():
+            if not date_folder.is_dir():
+                continue
+
+            try:
+                # 解析文件夹名称中的日期
+                folder_name = date_folder.name
+                if not re.match(r'\d{4}年\d{2}月\d{2}日', folder_name):
+                    continue
+
+                # 转换为日期对象进行比较
+                folder_date_str = folder_name.replace('年', '-').replace('月', '-').replace('日', '')
+                folder_date = datetime.strptime(folder_date_str, '%Y-%m-%d')
+
+                # 如果文件夹日期早于截止日期，则删除
+                if folder_date < cutoff_date:
+                    folder_size = FileHelper._get_folder_size(date_folder)
+                    total_size += folder_size
+
+                    # 删除整个文件夹
+                    import shutil
+                    shutil.rmtree(date_folder)
+                    deleted_count += 1
+                    print(f"已删除过期文件夹: {folder_name}")
+
+            except Exception as e:
+                print(f"清理文件夹 {date_folder.name} 时出错: {e}")
+
+        # 清理去重历史文件中的过期记录
+        FileHelper._cleanup_dedup_history(cutoff_date)
+
+        if deleted_count > 0:
+            size_mb = total_size / (1024 * 1024)
+            print(f"清理完成：删除了 {deleted_count} 个过期文件夹，释放空间 {size_mb:.2f} MB")
+        else:
+            print("清理完成：没有发现过期文件")
+
+    @staticmethod
+    def _get_folder_size(folder_path: Path) -> int:
+        """计算文件夹大小（字节）"""
+        total_size = 0
+        try:
+            for file_path in folder_path.rglob('*'):
+                if file_path.is_file():
+                    total_size += file_path.stat().st_size
+        except Exception:
+            pass
+        return total_size
+
+    @staticmethod
+    def _cleanup_dedup_history(cutoff_date: datetime) -> None:
+        """清理去重历史文件中的过期记录"""
+        history_file = Path("output") / "dedup_history.json"
+        if not history_file.exists():
+            return
+
+        try:
+            with open(history_file, "r", encoding="utf-8") as f:
+                history = json.loads(f.read())
+
+            cleaned_history = {}
+            removed_count = 0
+
+            for title, records in history.items():
+                valid_records = []
+                for record in records:
+                    try:
+                        record_time = datetime.fromisoformat(record["timestamp"])
+                        if record_time >= cutoff_date:
+                            valid_records.append(record)
+                        else:
+                            removed_count += 1
+                    except Exception:
+                        # 如果时间戳格式有问题，保留记录
+                        valid_records.append(record)
+
+                if valid_records:
+                    cleaned_history[title] = valid_records
+
+            # 保存清理后的历史记录
+            with open(history_file, "w", encoding="utf-8") as f:
+                f.write(json.dumps(cleaned_history, ensure_ascii=False, indent=2))
+
+            if removed_count > 0:
+                print(f"清理去重历史：移除了 {removed_count} 条过期记录")
+
+        except Exception as e:
+            print(f"清理去重历史文件时出错: {e}")
 
 
 class DataFetcher:
@@ -689,6 +980,155 @@ class DataProcessor:
                         title_info[source_name][title]["url"] = url
                     if not title_info[source_name][title].get("mobileUrl"):
                         title_info[source_name][title]["mobileUrl"] = mobile_url
+
+    @staticmethod
+    def load_dedup_history() -> Dict[str, List[Dict]]:
+        """加载去重历史记录"""
+        history_file = Path("output") / "dedup_history.json"
+        if not history_file.exists():
+            return {}
+
+        try:
+            with open(history_file, "r", encoding="utf-8") as f:
+                history = json.loads(f.read())
+
+            # 清理过期记录（超过去重时间窗口的记录）
+            current_time = TimeHelper.get_beijing_time()
+            time_window_hours = CONFIG["DEDUP_TIME_WINDOW"]
+
+            cleaned_history = {}
+            for title, records in history.items():
+                valid_records = []
+                for record in records:
+                    record_time = datetime.fromisoformat(record["timestamp"])
+                    if (current_time - record_time).total_seconds() < time_window_hours * 3600:
+                        valid_records.append(record)
+
+                if valid_records:
+                    cleaned_history[title] = valid_records
+
+            return cleaned_history
+        except Exception as e:
+            print(f"加载去重历史失败: {e}")
+            return {}
+
+    @staticmethod
+    def save_dedup_history(history: Dict[str, List[Dict]]) -> None:
+        """保存去重历史记录"""
+        try:
+            FileHelper.ensure_directory_exists("output")
+            history_file = Path("output") / "dedup_history.json"
+
+            with open(history_file, "w", encoding="utf-8") as f:
+                f.write(json.dumps(history, ensure_ascii=False, indent=2))
+        except Exception as e:
+            print(f"保存去重历史失败: {e}")
+
+    @staticmethod
+    def deduplicate_titles(stats: List[Dict]) -> List[Dict]:
+        """对统计结果进行去重处理"""
+        if not CONFIG["SMART_FREQUENCY"] or CONFIG["SIMILARITY_THRESHOLD"] <= 0:
+            return stats
+
+        print("开始执行智能去重...")
+
+        # 加载历史记录
+        history = DataProcessor.load_dedup_history()
+        current_time = TimeHelper.get_beijing_time()
+
+        deduplicated_stats = []
+        new_history = history.copy()
+        removed_count = 0
+
+        for stat in stats:
+            deduplicated_titles = []
+
+            for title_data in stat["titles"]:
+                title = title_data["title"]
+                should_keep = True
+
+                # 检查是否与历史记录中的标题相似
+                for hist_title in history.keys():
+                    if SimilarityHelper.is_similar(title, hist_title):
+                        print(f"发现相似标题: '{title}' ≈ '{hist_title}'")
+                        should_keep = False
+                        removed_count += 1
+                        break
+
+                if should_keep:
+                    deduplicated_titles.append(title_data)
+
+                    # 添加到历史记录
+                    if title not in new_history:
+                        new_history[title] = []
+
+                    new_history[title].append({
+                        "timestamp": current_time.isoformat(),
+                        "source": title_data.get("source_alias", ""),
+                        "weight": StatisticsCalculator.calculate_news_weight(title_data)
+                    })
+
+            if deduplicated_titles:
+                new_stat = stat.copy()
+                new_stat["titles"] = deduplicated_titles
+                new_stat["count"] = len(deduplicated_titles)
+                deduplicated_stats.append(new_stat)
+
+        # 保存更新后的历史记录
+        DataProcessor.save_dedup_history(new_history)
+
+        if removed_count > 0:
+            print(f"智能去重完成，移除了 {removed_count} 条相似内容")
+        else:
+            print("智能去重完成，未发现重复内容")
+
+        return deduplicated_stats
+
+    @staticmethod
+    def limit_push_items(stats: List[Dict]) -> List[Dict]:
+        """限制推送条目数量，避免信息过载"""
+        max_items = CONFIG["MAX_PUSH_ITEMS"]
+        if max_items <= 0:
+            return stats
+
+        total_items = sum(len(stat["titles"]) for stat in stats)
+        if total_items <= max_items:
+            return stats
+
+        print(f"内容过多({total_items}条)，限制为{max_items}条最重要的内容")
+
+        # 收集所有标题并按权重排序
+        all_titles = []
+        for stat in stats:
+            for title_data in stat["titles"]:
+                weight = StatisticsCalculator.calculate_news_weight(title_data)
+                all_titles.append((weight, title_data, stat["word"]))
+
+        # 按权重降序排序，取前N条
+        all_titles.sort(key=lambda x: x[0], reverse=True)
+        top_titles = all_titles[:max_items]
+
+        # 重新组织数据结构
+        word_groups = {}
+        for weight, title_data, word in top_titles:
+            if word not in word_groups:
+                word_groups[word] = []
+            word_groups[word].append(title_data)
+
+        # 构建新的stats
+        limited_stats = []
+        for word, titles in word_groups.items():
+            limited_stats.append({
+                "word": word,
+                "count": len(titles),
+                "titles": titles,
+                "percentage": 0  # 重新计算会在后续步骤中处理
+            })
+
+        # 按条目数量排序
+        limited_stats.sort(key=lambda x: x["count"], reverse=True)
+
+        return limited_stats
 
 
 class StatisticsCalculator:
@@ -2491,8 +2931,16 @@ class NewsAnalyzer:
             focus_new_only=CONFIG["FOCUS_NEW_ONLY"],
         )
 
+        # 应用智能去重和限制功能（当日汇总）
+        if CONFIG["SMART_FREQUENCY"]:
+            # 当日汇总不受静默时间限制，但应用去重和限制
+            stats_processed = DataProcessor.deduplicate_titles(stats)
+            stats_for_notification = DataProcessor.limit_push_items(stats_processed)
+        else:
+            stats_for_notification = stats
+
         html_file = ReportGenerator.generate_html_report(
-            stats,
+            stats,  # HTML报告使用原始数据，显示完整信息
             total_titles,
             is_daily=True,
             new_titles=new_titles,
@@ -2517,12 +2965,13 @@ class NewsAnalyzer:
             CONFIG["ENABLE_NOTIFICATION"]
             and has_webhook
             and self.report_type in ["daily", "both"]
-            and self._has_valid_content(stats, new_titles)
+            and self._has_valid_content(stats_for_notification, new_titles)
+            and len(stats_for_notification) > 0
         ):
             hide_new_section = CONFIG["FOCUS_NEW_ONLY"]
 
             ReportGenerator.send_to_webhooks(
-                stats,
+                stats_for_notification,
                 [],
                 "当日汇总",
                 new_titles,
@@ -2538,7 +2987,7 @@ class NewsAnalyzer:
         elif (
             CONFIG["ENABLE_NOTIFICATION"]
             and has_webhook
-            and not self._has_valid_content(stats, new_titles)
+            and not self._has_valid_content(stats_for_notification, new_titles)
         ):
             if CONFIG["FOCUS_NEW_ONLY"]:
                 print("跳过当日汇总通知：新增模式下未检测到匹配的新增新闻")
@@ -2604,6 +3053,9 @@ class NewsAnalyzer:
         print(f"开始爬取数据，请求间隔 {self.request_interval} 毫秒")
         FileHelper.ensure_directory_exists("output")
 
+        # 执行自动清理
+        FileHelper.cleanup_old_files()
+
         results, id_to_alias, failed_ids = self.data_fetcher.crawl_websites(
             ids, self.request_interval
         )
@@ -2645,17 +3097,33 @@ class NewsAnalyzer:
             focus_new_only=CONFIG["FOCUS_NEW_ONLY"],
         )
 
+        # 应用智能去重和限制功能
+        if CONFIG["SMART_FREQUENCY"]:
+            # 检查是否在静默时间段
+            if TimeHelper.should_skip_push():
+                print("当前处于静默时间段，跳过推送但继续生成报告")
+                # 仍然生成HTML报告，但不发送通知
+                stats_for_notification = []
+            else:
+                # 应用去重
+                stats_processed = DataProcessor.deduplicate_titles(stats)
+                # 限制推送条目数量
+                stats_for_notification = DataProcessor.limit_push_items(stats_processed)
+        else:
+            stats_for_notification = stats
+
         # 只有启用通知且配置了webhook且有有效内容时才发送通知
         if (
             CONFIG["ENABLE_NOTIFICATION"]
             and has_webhook
             and self.report_type in ["current", "both"]
-            and self._has_valid_content(stats, new_titles)
+            and self._has_valid_content(stats_for_notification, new_titles)
+            and len(stats_for_notification) > 0
         ):
             hide_new_section = CONFIG["FOCUS_NEW_ONLY"]
 
             ReportGenerator.send_to_webhooks(
-                stats,
+                stats_for_notification,
                 failed_ids,
                 "单次爬取",
                 new_titles,
