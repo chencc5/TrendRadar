@@ -361,6 +361,8 @@ class FileHelper:
                 # 转换为日期对象进行比较
                 folder_date_str = folder_name.replace('年', '-').replace('月', '-').replace('日', '')
                 folder_date = datetime.strptime(folder_date_str, '%Y-%m-%d')
+                # 添加时区信息以便比较
+                folder_date = folder_date.replace(tzinfo=current_time.tzinfo)
 
                 # 如果文件夹日期早于截止日期，则删除
                 if folder_date < cutoff_date:
