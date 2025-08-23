@@ -1,0 +1,186 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>频率词统计报告</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1, h2 { color: #333; }
+                table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                tr:nth-child(even) { background-color: #f9f9f9; }
+                .word { font-weight: bold; }
+                .count { text-align: center; }
+                .percentage { text-align: center; }
+                .titles { max-width: 500px; }
+                .source { color: #666; font-style: italic; }
+                .error { color: #d9534f; }
+                .news-link { 
+                    color: #007bff; 
+                    text-decoration: none; 
+                    border-bottom: 1px dotted #007bff;
+                }
+                .news-link:hover { 
+                    color: #0056b3; 
+                    text-decoration: underline; 
+                }
+                .news-link:visited { 
+                    color: #6f42c1; 
+                }
+                .no-link { 
+                    color: #333; 
+                }
+                .new-title {
+                    background-color: #fff3cd;
+                    border: 1px solid #ffc107;
+                    border-radius: 3px;
+                    padding: 2px 6px;
+                    margin: 2px 0;
+                }
+                .new-section {
+                    background-color: #d1ecf1;
+                    border: 1px solid #bee5eb;
+                    border-radius: 5px;
+                    padding: 10px;
+                    margin-top: 10px;
+                }
+                .new-section h3 {
+                    color: #0c5460;
+                    margin-top: 0;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>频率词统计报告</h1>
+        <p>总标题数: 309</p><p>生成时间: 2025-08-23 19:15:57</p>
+            <table>
+                <tr>
+                    <th>排名</th>
+                    <th>频率词</th>
+                    <th>出现次数</th>
+                    <th>占比</th>
+                    <th>相关标题</th>
+                </tr>
+        
+                <tr>
+                    <td>1</td>
+                    <td class="word">特朗普 Trump</td>
+                    <td class="count">13</td>
+                    <td class="percentage">4.21%</td>
+                    <td class="titles">[凤凰网] <a href="https://news.ifeng.com/c/8m3QzAMDZ7d" target="_blank" class="news-link">“我不高兴”，特朗普再次威胁制裁俄罗斯</a> <font color='red'><strong>[1]</strong></font> <font color='grey'>- 19时15分</font><br>[凤凰网] <a href="https://news.ifeng.com/c/8m39GXjOPK1" target="_blank" class="news-link">欧盟外长拱火：特朗普这事办的，普京嘴都笑歪</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 19时15分</font><br>[华尔街见闻] <a href="https://wallstreetcn.com/articles/3753948" target="_blank" class="news-link">“一分钱没花”！特朗普称政府已获得英特尔10%股份，美国产业政策或开启大转向</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 19时15分</font><br><div class='new-title'>🆕 [凤凰网] <a href="https://news.ifeng.com/c/8m3NdL0V3NL" target="_blank" class="news-link">特朗普新任命38岁驻印度大使，向莫迪释放重要信号</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 19时15分</font></div><br>[靠谱消息] <a href="https://www.dw.com/zh/巴基斯坦提名特朗普角逐诺贝尔和平奖/a-72995268" target="_blank" class="news-link">巴基斯坦提名特朗普角逐诺贝尔和平奖</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 19时15分</font><br>[财联社热门] <a href="https://www.cls.cn/detail/2123709" target="_blank" class="news-link">美国政府已持有英特尔10%的股份 特朗普：伟大的交易</a> [10] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/23/56806168b76448ed85c2e76b1f9923d5.html" target="_blank" class="news-link">特朗普威胁对芝加哥进行联邦干预并完全接管华盛顿</a> [15] <font color='grey'>- 19时15分</font><br>[卫星通讯社] <a href="https://sputniknews.cn/20250823/1067014341.html" target="_blank" class="news-link">媒体：若特朗普的倡议失败，乌克兰将面临灾难性后果</a> [15] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/23/52fc2f72dab24c729bf4865a7b542b89.html" target="_blank" class="news-link">特朗普：再给普京“几周”时间</a> [18] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/23/4af7daa121fc4765a900d1ac76ef0111.html" target="_blank" class="news-link">特朗普对乌克兰袭击俄油管“感到非常愤怒”</a> [19] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/22/12b857cea03048ccb92c5bbd5078417e.html" target="_blank" class="news-link">关于俄乌谈判，特朗普再次给出两周期限</a> [23] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/22/7010057ccdd742aeadfa985f8944495c.html" target="_blank" class="news-link">美国法院撤销对特朗普4.64亿美元罚款</a> [30] <font color='grey'>- 19时15分</font><br>[联合早报] <a href="https://www.zaochenbao.com/news/politics/202508/2350424.html" target="_blank" class="news-link">特朗普：必要时可延长TikTok期限 已有美国买家</a> [30] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>2</td>
+                    <td class="word">ai 人工智能 AGI 大模型 LLM agent kimi 豆包</td>
+                    <td class="count">13</td>
+                    <td class="percentage">4.21%</td>
+                    <td class="titles"><div class='new-title'>🆕 [参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/23/57d03c2eaaeb47a789e8da1875dbcb81.html" target="_blank" class="news-link">诺贝尔经济学奖得主斯宾塞：人工智能深刻改变亚当·斯密理论</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 19时15分</font></div><br>[财联社热门] <a href="https://www.cls.cn/detail/2123844" target="_blank" class="news-link">探访国家先进计算太原中心：国产算力如何支撑AI与大科学？｜一线</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 19时15分</font><br>[少数派] <a href="https://sspai.com/post/101081" target="_blank" class="news-link">AI 百日，恍若数年：我的 2025 上半年 AI 模型与产品清单推荐</a> [12] <font color='grey'>- 19时15分</font><br>[少数派] <a href="https://sspai.com/post/101085" target="_blank" class="news-link">去伪存真：聊聊 AI 智能体的定义、工具选择与避坑</a> [16] <font color='grey'>- 19时15分</font><br>[虫部落] <a href="https://www.chongbuluo.com/thread-22699-1-1.html" target="_blank" class="news-link">对 AI 充满好奇心？注册邀请：成为隔壁前 500 位种子用户</a> [16] <font color='grey'>- 19时15分</font><br>[稀土掘金] <a href="https://juejin.cn/post/7540603126228025396" target="_blank" class="news-link">async/await 到底要不要加 try catch？我来给你整明白！</a> [17] <font color='grey'>- 19时15分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1154365" target="_blank" class="news-link">[免费] [Windows 版来了] LazyTyper：语音 7x 倍速怒喷 AI</a> [18] <font color='grey'>- 19时15分</font><br>[稀土掘金] <a href="https://juejin.cn/post/7540090046705549362" target="_blank" class="news-link">告别死记硬背查命令：我用 AI 半天写了个 AI 命令行</a> [18] <font color='grey'>- 19时15分</font><br>[少数派] <a href="https://sspai.com/post/100991" target="_blank" class="news-link">AI 时代的本地知识管理往何处去？评 DEVONthink 4.0</a> [20] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/22/b35c4234b4734e8aaaa813ecab92b174.html" target="_blank" class="news-link">美人工智能热潮正挤压其他经济领域</a> [24] <font color='grey'>- 19时15分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1154290" target="_blank" class="news-link">AI 生成高还原度页面 UI</a> [29] <font color='grey'>- 19时15分</font><br><div class='new-title'>🆕 [稀土掘金] <a href="https://juejin.cn/post/7539739164629778470" target="_blank" class="news-link">在浏览器里“养”一只会写字的仓鼠——AI SSE 流式文本生成全攻略</a> [29] <font color='grey'>- 19时15分</font></div><br>[V2EX] <a href="https://www.v2ex.com/t/1154286" target="_blank" class="news-link">Dify LLM 视觉参数问题请教</a> [30] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>3</td>
+                    <td class="word">俄乌 乌克兰 俄罗斯 普京 泽连斯基</td>
+                    <td class="count">10</td>
+                    <td class="percentage">3.24%</td>
+                    <td class="titles">[凤凰网] <a href="https://news.ifeng.com/c/8m3D40TJByM" target="_blank" class="news-link">涉及中国，卢卡申科驳斥泽连斯基</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 19时15分</font><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20250823/1067016287.html" target="_blank" class="news-link">“今日俄罗斯”总编西蒙尼扬对记者维辛斯基的去世表示哀悼</a> <font color='red'><strong>[3]</strong></font> <font color='grey'>- 19时15分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20250823/1067016403.html" target="_blank" class="news-link">乌克兰就领土让步发布新声明</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 19时15分</font></div><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/23/dbe0e7560388469ab5d1b35d56e0521f.html" target="_blank" class="news-link">普京：恢复俄美关系“曙光已现”</a> [8] <font color='grey'>- 19时15分</font><br>[卫星通讯社] <a href="https://sputniknews.cn/20250823/1067015504.html" target="_blank" class="news-link">“今日俄罗斯”媒体集团记者基里尔·维辛斯基去世</a> [8] <font color='grey'>- 19时15分</font><br>[卫星通讯社] <a href="https://sputniknews.cn/20250823/1067013278.html" target="_blank" class="news-link">普京在萨罗夫会见核工业专家</a> [19] <font color='grey'>- 19时15分</font><br>[靠谱消息] <a href="https://www.dw.com/zh/普京：理论上-整个乌克兰都是我们的/a-72991725" target="_blank" class="news-link">普京：理论上“整个乌克兰都是我们的”</a> [20] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/22/b60f23442ed34155921c756f7367cea1.html" target="_blank" class="news-link">美欧已就乌克兰问题军事选项完成讨论</a> [22] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/22/f178b8d56af94fb8b61593eb909c8d5d.html" target="_blank" class="news-link">万斯警告泽连斯基“行为规矩点”</a> [27] <font color='grey'>- 19时15分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/22/31fd246e3cb14e4883f26c3e1226173a.html" target="_blank" class="news-link">泽连斯基：先有安全保障，后与普京会晤</a> [29] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>4</td>
+                    <td class="word">中东 以色列 巴勒斯坦 伊朗</td>
+                    <td class="count">7</td>
+                    <td class="percentage">2.27%</td>
+                    <td class="titles">[靠谱消息] <a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85%E6%8A%A5%E9%81%93/20250621-%E4%BB%A5%E8%89%B2%E5%88%97%E4%BC%8A%E6%9C%97%E6%8C%81%E7%BB%AD%E4%BA%A4%E7%81%AB-%E5%BE%B7%E9%BB%91%E5%85%B0%E7%A7%B0%E8%BF%84%E4%BB%8A%E9%80%BE400%E6%AD%BB" target="_blank" class="news-link">以色列伊朗持续交火 德黑兰称迄今逾400死</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 19时15分</font><br><div class='new-title'>🆕 [参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/08/23/4d158cb4849c45a2938cc2d94be4a232.html" target="_blank" class="news-link">伊朗下周与欧洲举行新一轮核谈判</a> <font color='red'><strong>[3]</strong></font> <font color='grey'>- 19时15分</font></div><br>[靠谱消息] <a href="https://www.dw.com/zh/以伊战火延烧-以色列再斩伊朗高层/a-72995182" target="_blank" class="news-link">以伊战火延烧 以色列再斩伊朗高层</a> [6] <font color='grey'>- 19时15分</font><br>[靠谱消息] <a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85%E6%8A%A5%E9%81%93/20250621-%E4%BC%8A%E6%9C%97%E9%A3%9E%E5%BC%B9%E6%94%BB%E5%87%BB%E4%BB%A5%E8%89%B2%E5%88%97%E5%8C%97%E9%83%A8%E6%B8%AF%E5%B8%82-%E5%8C%BB%E9%99%A2%E9%80%9A%E6%8A%A5%E8%87%B3%E5%B0%9119%E4%BA%BA%E5%8F%97%E4%BC%A4" target="_blank" class="news-link">伊朗飞弹攻击以色列北部港市 医院通报至少19人受伤</a> [10] <font color='grey'>- 19时15分</font><br>[靠谱消息] <a href="https://www.dw.com/zh/伊朗：与以色列的战争会引发政权更迭吗？/a-72992274" target="_blank" class="news-link">伊朗：与以色列的战争会引发政权更迭吗？</a> [16] <font color='grey'>- 19时15分</font><br>[靠谱消息] <a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85%E6%8A%A5%E9%81%93/20250621-%E7%BE%8E%E5%B0%86%E5%9C%A8%E9%9D%A0%E8%BF%91%E4%B8%AD%E4%B8%9C%E5%9C%B0%E5%8C%BA%E9%83%A8%E7%BD%B2%E7%AC%AC3%E8%89%98%E8%88%AA%E8%88%B0" target="_blank" class="news-link">美将在靠近中东地区部署第3艘航舰</a> [22] <font color='grey'>- 19时15分</font><br>[靠谱消息] <a href="https://www3.nhk.or.jp/nhkworld/zh/news/20250621_N01/" target="_blank" class="news-link">英法德欧盟与伊朗就伊核问题进行磋商</a> [29] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>5</td>
+                    <td class="word">开源 open source github</td>
+                    <td class="count">4</td>
+                    <td class="percentage">1.29%</td>
+                    <td class="titles"><div class='new-title'>🆕 [V2EX] <a href="https://www.v2ex.com/t/1154453" target="_blank" class="news-link">求问， JetBrains 系 IDE 中 GIthub Copilot 和 Windsurf 那个更值得订阅？</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 19时15分</font></div><br>[稀土掘金] <a href="https://juejin.cn/post/7540915350804955176" target="_blank" class="news-link">🔥 近期 Star 飙升！uView Pro 文档也开源啦：完全免费、无广告、高效上手</a> [19] <font color='grey'>- 19时15分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1154358" target="_blank" class="news-link">[开源分享] MyBili，收藏夹备份程序 v1.3.1 发布支持订阅 UP 主、订阅合集</a> [20] <font color='grey'>- 19时15分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1154351" target="_blank" class="news-link">搞了一个开源的数据库比较工具</a> [22] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>6</td>
+                    <td class="word">DeepSeek 梁文锋 deep research</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.65%</td>
+                    <td class="titles">[稀土掘金] <a href="https://juejin.cn/post/7540906691911598114" target="_blank" class="news-link">DeepSeek删豆包冲上热搜，大模型世子之争演都不演了</a> [8] <font color='grey'>- 19时15分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1154301" target="_blank" class="news-link">试用了 deepseek v3.1 + claude code ，感觉 deepseek v3.1 在指令跟随上问题比较大。</a> [28] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>7</td>
+                    <td class="word">马斯克 特斯拉 SpaceX Neuralink</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.65%</td>
+                    <td class="titles">[靠谱消息] <a href="https://www.rfi.fr/cn/%E8%B4%A2%E7%BB%8F%E5%BF%AB%E8%AE%AF/20250621-%E7%89%B9%E6%96%AF%E6%8B%89%E5%9C%A8%E4%B8%AD%E5%9B%BD%E6%89%93%E9%80%A0%E9%A6%96%E5%BA%A7%E7%94%B5%E7%BD%91%E4%BE%A7%E5%82%A8%E8%83%BD%E7%94%B5%E7%AB%99" target="_blank" class="news-link">特斯拉在中国打造首座电网侧储能电站</a> [17] <font color='grey'>- 19时15分</font><br>[IT之家] <a href="https://www.ithome.com/0/877/527.htm" target="_blank" class="news-link">并非玩笑：马斯克宣布为 xAI 新公司“巨硬”招人，项目真实存在</a> [24] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>8</td>
+                    <td class="word">微软 Microsoft</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.65%</td>
+                    <td class="titles"><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/877/547.htm" target="_blank" class="news-link">微软将为 ROG Xbox Ally 掌机引入云端编译着色器特性，Win 平台 3A 大作初次加载可提速 85%</a> [7] <font color='grey'>- 19时15分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/877/546.htm" target="_blank" class="news-link">微软发布 SQL Server 2025 首个候选版本 RC0：引入 AI 功能与 TLS 1.3 默认支持</a> [8] <font color='grey'>- 19时15分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>9</td>
+                    <td class="word">黄仁勋 英伟达 NVIDIA</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.65%</td>
+                    <td class="titles">[财联社热门] <a href="https://www.cls.cn/detail/2123727" target="_blank" class="news-link">【早报】国常会最新部署！事关体育产业；英伟达要求部分零部件供应商暂停生产H20芯片，外交部回应</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 19时15分</font><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/877/540.htm" target="_blank" class="news-link">网易《逆水寒》手游最新全景光追效果亮相：联合英伟达打造，RTX 4060 可开</a> [13] <font color='grey'>- 19时15分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>10</td>
+                    <td class="word">谷歌 google gemini deepmind</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.65%</td>
+                    <td class="titles">[酷安] <a href="https://www.coolapk.com/feed/66792294" target="_blank" class="news-link">工欲善其事，必先利其器。10bit高色深计算摄影，一种既方便出图又方便修图的计算摄影模式，由该模式拍摄的10bit heif照片相比raw而言省去了繁琐的降噪过程，相比直接拍出的jpg而言修出的jpg不容易色彩断层，可以说是一种能大幅提升拍照效果的利器。可是，为什么在新一代高端相机已经普及10bit heif的情况下，天天叫嚣着自己是v单、夜神的安卓Ultra级影像旗舰的heif却是一修图就容易出现色彩断层的8位色深呢？本篇文章以手机端第一个高色深计算摄影功能——OPPO10亿色影像的发展历程，为您介绍高色深计算摄影的原理和优势，并讲述被捧上天的谷歌是怎么毁掉安卓端乃至手机端第一个高色深计算摄影功能的</a> <font color='red'><strong>[3]</strong></font> <font color='grey'>- 19时15分</font><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/877/554.htm" target="_blank" class="news-link">谷歌更新服务条款：严打 YouTube 跨区订阅行为，9 月 26 日起生效</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 19时15分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>11</td>
+                    <td class="word">cursor Cursor AI</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.65%</td>
+                    <td class="titles">[V2EX] <a href="https://www.v2ex.com/t/1154357" target="_blank" class="news-link">分享一个自用的 cursorrule: 强化信息收集 以及 选项式编程</a> [21] <font color='grey'>- 19时15分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1154337" target="_blank" class="news-link">cursor 的账单是怎么算的？有点懵</a> [23] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>12</td>
+                    <td class="word">claude Anthropic</td>
+                    <td class="count">1</td>
+                    <td class="percentage">0.32%</td>
+                    <td class="titles">[V2EX] <a href="https://www.v2ex.com/t/1154387" target="_blank" class="news-link">ccpet – 一个生活在你 Claude Code 状态栏中的虚拟宠物，靠你的 token 使用存活</a> [14] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>13</td>
+                    <td class="word">MCP Model Context Protocol</td>
+                    <td class="count">1</td>
+                    <td class="percentage">0.32%</td>
+                    <td class="titles">[稀土掘金] <a href="https://juejin.cn/post/7541222899732152358" target="_blank" class="news-link">当Trae遇上高德MCP：一次国庆武汉之旅的AI技术实践</a> [23] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>14</td>
+                    <td class="word">2api API</td>
+                    <td class="count">1</td>
+                    <td class="percentage">0.32%</td>
+                    <td class="titles">[V2EX] <a href="https://www.v2ex.com/t/1154362" target="_blank" class="news-link">ComfyUI 部署服务，发起 API 请求</a> [19] <font color='grey'>- 19时15分</font></td>
+                </tr>
+            
+            </table>
+        
+            <div class="new-section">
+                <h3>🆕 本次新增热点新闻 (共 11 条)</h3>
+            <h4>凤凰网 (1 条)</h4><ul><li><a href="https://news.ifeng.com/c/8m3NdL0V3NL" target="_blank" class="news-link">特朗普新任命38岁驻印度大使，向莫迪释放重要信号</a> <font color='red'><strong>[5]</strong></font></li></ul><h4>V2EX (1 条)</h4><ul><li><a href="https://www.v2ex.com/t/1154453" target="_blank" class="news-link">求问， JetBrains 系 IDE 中 GIthub Copilot 和 Windsurf 那个更值得订阅？</a> <font color='red'><strong>[4]</strong></font></li></ul><h4>IT之家 (4 条)</h4><ul><li><a href="https://www.ithome.com/0/877/554.htm" target="_blank" class="news-link">谷歌更新服务条款：严打 YouTube 跨区订阅行为，9 月 26 日起生效</a> <font color='red'><strong>[4]</strong></font></li><li><a href="https://www.ithome.com/0/877/547.htm" target="_blank" class="news-link">微软将为 ROG Xbox Ally 掌机引入云端编译着色器特性，Win 平台 3A 大作初次加载可提速 85%</a> [7]</li><li><a href="https://www.ithome.com/0/877/546.htm" target="_blank" class="news-link">微软发布 SQL Server 2025 首个候选版本 RC0：引入 AI 功能与 TLS 1.3 默认支持</a> [8]</li><li><a href="https://www.ithome.com/0/877/540.htm" target="_blank" class="news-link">网易《逆水寒》手游最新全景光追效果亮相：联合英伟达打造，RTX 4060 可开</a> [13]</li></ul><h4>稀土掘金 (1 条)</h4><ul><li><a href="https://juejin.cn/post/7539739164629778470" target="_blank" class="news-link">在浏览器里“养”一只会写字的仓鼠——AI SSE 流式文本生成全攻略</a> [29]</li></ul><h4>参考消息 (2 条)</h4><ul><li><a href="https://ckxxapp.ckxx.net/pages/2025/08/23/57d03c2eaaeb47a789e8da1875dbcb81.html" target="_blank" class="news-link">诺贝尔经济学奖得主斯宾塞：人工智能深刻改变亚当·斯密理论</a> <font color='red'><strong>[2]</strong></font></li><li><a href="https://ckxxapp.ckxx.net/pages/2025/08/23/4d158cb4849c45a2938cc2d94be4a232.html" target="_blank" class="news-link">伊朗下周与欧洲举行新一轮核谈判</a> <font color='red'><strong>[3]</strong></font></li></ul><h4>卫星通讯社 (2 条)</h4><ul><li><a href="https://sputniknews.cn/20250823/1067016287.html" target="_blank" class="news-link">“今日俄罗斯”总编西蒙尼扬对记者维辛斯基的去世表示哀悼</a> <font color='red'><strong>[3]</strong></font></li><li><a href="https://sputniknews.cn/20250823/1067016403.html" target="_blank" class="news-link">乌克兰就领土让步发布新声明</a> <font color='red'><strong>[4]</strong></font></li></ul></div>
+        </body>
+        </html>
+        
