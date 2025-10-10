@@ -859,5 +859,19 @@
       "source": "稀土掘金",
       "weight": 3.6
     }
+  ],
+  "俄总统助理：普京与特朗普在阿拉斯加达成的共识是解决问题的基础": [
+    {
+      "timestamp": "2025-10-11T03:14:00.065957+08:00",
+      "source": "卫星通讯社",
+      "weight": 16.6
+    }
+  ],
+  "Claude Code 配合 CCR（Claude Code Router）和 Gemini Balance 实现无限续杯": [
+    {
+      "timestamp": "2025-10-11T03:14:00.065957+08:00",
+      "source": "V2EX",
+      "weight": 19.0
+    }
   ]
 }
