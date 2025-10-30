@@ -1,0 +1,194 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>频率词统计报告</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1, h2 { color: #333; }
+                table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                tr:nth-child(even) { background-color: #f9f9f9; }
+                .word { font-weight: bold; }
+                .count { text-align: center; }
+                .percentage { text-align: center; }
+                .titles { max-width: 500px; }
+                .source { color: #666; font-style: italic; }
+                .error { color: #d9534f; }
+                .news-link { 
+                    color: #007bff; 
+                    text-decoration: none; 
+                    border-bottom: 1px dotted #007bff;
+                }
+                .news-link:hover { 
+                    color: #0056b3; 
+                    text-decoration: underline; 
+                }
+                .news-link:visited { 
+                    color: #6f42c1; 
+                }
+                .no-link { 
+                    color: #333; 
+                }
+                .new-title {
+                    background-color: #fff3cd;
+                    border: 1px solid #ffc107;
+                    border-radius: 3px;
+                    padding: 2px 6px;
+                    margin: 2px 0;
+                }
+                .new-section {
+                    background-color: #d1ecf1;
+                    border: 1px solid #bee5eb;
+                    border-radius: 5px;
+                    padding: 10px;
+                    margin-top: 10px;
+                }
+                .new-section h3 {
+                    color: #0c5460;
+                    margin-top: 0;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>频率词统计报告</h1>
+        <p>总标题数: 312</p><p>生成时间: 2025-10-30 11:42:19</p>
+            <table>
+                <tr>
+                    <th>排名</th>
+                    <th>频率词</th>
+                    <th>出现次数</th>
+                    <th>占比</th>
+                    <th>相关标题</th>
+                </tr>
+        
+                <tr>
+                    <td>1</td>
+                    <td class="word">特朗普 Trump</td>
+                    <td class="count">28</td>
+                    <td class="percentage">8.97%</td>
+                    <td class="titles"><div class='new-title'>🆕 [联合早报] <a href="https://www.zaochenbao.com/news/politics/202510/3056093.html" target="_blank" class="news-link">习特会前：特朗普突宣布指示战争部重启核武测试</a> <font color='red'><strong>[1]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068140399.html" target="_blank" class="news-link">美国会议员：特朗普对印度征收关税是因为莫迪的行为，而不是因为进口俄罗斯石油</a> <font color='red'><strong>[1]</strong></font> <font color='grey'>- 11时42分</font></div><br>[华尔街见闻] <a href="https://wallstreetcn.com/articles/3758164" target="_blank" class="news-link">习近平将同美国总统特朗普举行会晤</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068139433.html" target="_blank" class="news-link">特朗普在与中国国家主席会晤时表示已就诸多问题达成共识</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [凤凰网] <a href="https://news.ifeng.com/c/8nrhIL4dt2o" target="_blank" class="news-link">特朗普：相信美中将达成协议，会带来令人兴奋的东西</a> <font color='red'><strong>[3]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://cn.nytimes.com/usa/20251030/trump-china-nvidia-chips-sales/" target="_blank" class="news-link">特朗普考虑向中国出售先进芯片，引发美国官员警惕</a> <font color='red'><strong>[3]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [凤凰网] <a href="https://news.ifeng.com/c/8nr4aV0B7Kq" target="_blank" class="news-link">特朗普称贸易协议“几乎敲定”，韩国确认对美投资2000亿美元</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [联合早报] <a href="https://www.zaochenbao.com/news/politics/202510/3056090.html" target="_blank" class="news-link">特朗普笑指习近平是强硬谈判者：这可不是好事</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068138608.html" target="_blank" class="news-link">特朗普称习近平是强硬的谈判对手</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [凤凰网] <a href="https://news.ifeng.com/c/8nrmtlqWVtM" target="_blank" class="news-link">美国民主党人报告：特朗普自我挖坑，给了中国底牌</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [联合早报] <a href="https://www.zaochenbao.com/news/politics/202510/3056089.html" target="_blank" class="news-link">习近平特朗普会晤开始</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068138421.html" target="_blank" class="news-link">美媒：台湾或更换“驻美代表”以保持特朗普的好感</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [联合早报] <a href="https://www.zaochenbao.com/news/politics/202510/3056088.html" target="_blank" class="news-link">特朗普在习特会前发文：G2即将召开</a> [6] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://www.dw.com/zh/韩美达成贸易协议-特朗普同意共享核动力潜舰技术/a-74542566" target="_blank" class="news-link">韩美达成贸易协议 特朗普同意共享核动力潜舰技术</a> [7] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068136755.html" target="_blank" class="news-link">特朗普称他已下令“对等”进行核武器试验</a> [8] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://www.bbc.com/zhongwen/articles/c0519g2506vo/simp" target="_blank" class="news-link">习近平和特朗普在韩国釜山会晤 贸易共识或将出炉</a> [8] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [凤凰网] <a href="https://news.ifeng.com/c/8nrJZ12ddrh" target="_blank" class="news-link">迎接特朗普，高市早苗笑了一天</a> [9] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068136456.html" target="_blank" class="news-link">习近平同特朗普会晤开始</a> [9] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://cn.wsj.com/articles/%E9%87%91%E8%89%B2%E5%A4%96%E4%BA%A4-%E5%A6%82%E4%BD%95%E8%B4%AF%E7%A9%BF%E7%89%B9%E6%9C%97%E6%99%AE%E4%BA%9A%E6%B4%B2%E4%B9%8B%E8%A1%8C-5ae0ac10" target="_blank" class="news-link">“金色外交”如何贯穿特朗普亚洲之行</a> [9] <font color='grey'>- 11时42分</font></div><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/10/29/e106de9dc82c44cbb59f1b67da688641.html" target="_blank" class="news-link">特朗普：美韩即将达成贸易协议</a> [10] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [靠谱消息] <a href="https://cn.wsj.com/articles/%E7%89%B9%E6%9C%97%E6%99%AE%E5%91%8A%E8%AF%89%E4%BA%9A%E6%B4%B2%E7%9B%9F%E5%8F%8B-%E8%BD%AE%E5%88%B0%E4%BD%A0%E4%BB%AC%E5%A2%9E%E5%8A%A0%E5%86%9B%E8%B4%B9%E5%BC%80%E6%94%AF%E4%BA%86-c8bceb63" target="_blank" class="news-link">特朗普告诉亚洲盟友：轮到你们增加军费开支了</a> [11] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068135802.html" target="_blank" class="news-link">俄专家：特朗普走得太远，与中国的关系在与习近平会晤后不太可能改变</a> [14] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://cn.wsj.com/articles/trump-says-hes-barred-from-running-for-third-term-after-weeks-of-speculation-ce315d86" target="_blank" class="news-link">特朗普称宪法禁止他寻求第三个任期</a> [15] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068135385.html" target="_blank" class="news-link">特朗普称韩国将从美国购买许多天然气和石油</a> [18] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://cn.wsj.com/articles/trump-republican-midterm-convention-las-vegas-0c9c3bc5" target="_blank" class="news-link">特朗普顾问考虑在拉斯维加斯举办罕见的共和党中期选举政治大会</a> [18] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [卫星通讯社] <a href="https://sputniknews.cn/20251030/1068135278.html" target="_blank" class="news-link">特朗普称已同意韩国建造核潜艇</a> [19] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [联合早报] <a href="https://www.zaochenbao.com/news/opinion/202510/3056068.html" target="_blank" class="news-link">陈国祥：美最高法院难为特朗普关税政策背书</a> [24] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://www.donga.com/cn/article/all/20251030/5931640/1" target="_blank" class="news-link">“为制作赠特朗普金冠每日工作10小时……致力还原天马冢金冠神韵”</a> [28] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>2</td>
+                    <td class="word">ai 人工智能 AGI 大模型 LLM agent kimi 豆包</td>
+                    <td class="count">18</td>
+                    <td class="percentage">5.77%</td>
+                    <td class="titles"><div class='new-title'>🆕 [V2EX] <a href="https://www.v2ex.com/t/1169347" target="_blank" class="news-link">AI 能否与制造业结合？创意结合 Ai 再到线下生产？</a> <font color='red'><strong>[3]</strong></font> <font color='grey'>- 11时42分</font></div><br>[少数派] <a href="https://sspai.com/post/103079" target="_blank" class="news-link">社区速递 113 | 派友热议 AI 浏览器、作者的新玩意和一周热评</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 11时42分</font><br>[稀土掘金] <a href="https://juejin.cn/post/7565518432043434010" target="_blank" class="news-link">前端图形引擎架构设计：AI生成设计稿落地实践</a> [7] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [财联社热门] <a href="https://www.cls.cn/detail/2185393" target="_blank" class="news-link">AI伴侣引发争议！Character.AI将禁止未成年人与其聊天机器人对话</a> [8] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [V2EX] <a href="https://www.v2ex.com/t/1169286" target="_blank" class="news-link">tailscale 是真听劝呀， peer relay 来了</a> [8] <font color='grey'>- 11时42分</font></div><br>[稀土掘金] <a href="https://juejin.cn/post/7566106457780453416" target="_blank" class="news-link">AI 能帮你写代码，但把代码变成软件，还是得靠人</a> [8] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/428.htm" target="_blank" class="news-link">三星互联网浏览器 PC 版登陆 Win11/10，支持跨设备同步与 Galaxy AI 功能</a> [11] <font color='grey'>- 11时42分</font></div><br>[V2EX] <a href="https://www.v2ex.com/t/1169243" target="_blank" class="news-link">写了 N 个 AI 应用，我开发了个极简的 LLM 提供商编辑器，每个 AI 应用都用得上，再也不需要为每个 AI 应用重复造轮子了</a> [13] <font color='grey'>- 11时42分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/10/29/6ff5c9ef55fd472483ca3b82fdc6b0c3.html" target="_blank" class="news-link">应对人工智能投资压力 亚马逊裁减3万个公司职位</a> [13] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/424.htm" target="_blank" class="news-link">JetBrains IDE 迎来全新外观，Islands 主题开放试用</a> [14] <font color='grey'>- 11时42分</font></div><br>[V2EX] <a href="https://www.v2ex.com/t/1169224" target="_blank" class="news-link">分享一个开发 AI 平台必备的 All in one 工作流框架</a> [15] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/421.htm" target="_blank" class="news-link">三星半导体部门三季度营业利润同比飙升 80%，AI 需求推动存储芯片业务强劲复苏</a> [16] <font color='grey'>- 11时42分</font></div><br>[稀土掘金] <a href="https://juejin.cn/post/7565778347038687241" target="_blank" class="news-link">使用AI生成的页面总是被一眼认出来怎么办？1分钟给你解决</a> [17] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/416.htm" target="_blank" class="news-link">2025 小鹏科技日定档 11 月 5 日，何小鹏称在物理 AI 领域涌现“惊喜能力”</a> [21] <font color='grey'>- 11时42分</font></div><br>[V2EX] <a href="https://www.v2ex.com/t/1169165" target="_blank" class="news-link">[Side Project] 做了一个 AI 小工具，帮 PM 把混乱的客户反馈一键转成 Linear/Jira issue。</a> [23] <font color='grey'>- 11时42分</font><br>[稀土掘金] <a href="https://juejin.cn/post/7565071325772546082" target="_blank" class="news-link">大模型输出总是不符合要求？来试试这个99%稳定率的方案。</a> [24] <font color='grey'>- 11时42分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1169107" target="_blank" class="news-link">一道三年级数学题把大模型难住了，不是说数学推理都很厉害吗</a> [28] <font color='grey'>- 11时42分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1169101" target="_blank" class="news-link">新项目计划提升 AI 编程工具使用比例，后端开发该如何选择与搭配？</a> [29] <font color='grey'>- 11时42分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>3</td>
+                    <td class="word">黄仁勋 英伟达 NVIDIA</td>
+                    <td class="count">7</td>
+                    <td class="percentage">2.24%</td>
+                    <td class="titles">[华尔街见闻] <a href="https://wallstreetcn.com/articles/3758166" target="_blank" class="news-link">鲍威尔意外鹰派，美股盘中转跌，英伟达支撑纳指最终收涨，美债黄金比特币跌，美元拉升</a> <font color='red'><strong>[1]</strong></font> <font color='grey'>- 11时42分</font><br>[财联社热门] <a href="https://www.cls.cn/detail/2185493" target="_blank" class="news-link">美股收盘：标普道指回落、纳指独领风骚 英伟达市值站稳5万亿</a> <font color='red'><strong>[4]</strong></font> <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [联合早报] <a href="https://www.zaochenbao.com/news/china/202510/3056077.html" target="_blank" class="news-link">富士康将用人形机器人为英伟达生产AI服务器</a> [16] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://www.donga.com/cn/article/all/20251030/5931793/1" target="_blank" class="news-link">黄仁勋将赴庆州 称“将有让韩国国民欣喜的发布”</a> [16] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/415.htm" target="_blank" class="news-link">华硕推 PE3000N 迷你电脑：首批搭载英伟达 T5000 模块，AI 算力 2070 FP4 TFLOPS</a> [22] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [靠谱消息] <a href="https://cn.wsj.com/articles/nvidia-first-5-trillion-company-market-cap-65afa29d" target="_blank" class="news-link">英伟达成为首家市值达5万亿美元的公司</a> [23] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/410.htm" target="_blank" class="news-link">“AI 黄仁勋”与英伟达 GTC 同时开直播，“假货”观看人数竟是正版 5 倍</a> [27] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>4</td>
+                    <td class="word">微软 Microsoft</td>
+                    <td class="count">6</td>
+                    <td class="percentage">1.92%</td>
+                    <td class="titles"><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/455.htm" target="_blank" class="news-link">Win10 / Win11 可继续装机：微软修复媒体创建工具 BUG，告别闪退与报错</a> <font color='red'><strong>[1]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/450.htm" target="_blank" class="news-link">微软 Win11 十月可选更新修复“更新并关机”变重启 BUG</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/444.htm" target="_blank" class="news-link">最佳苹果开发者：微软 iOS 26 版 Office App 焕新液态玻璃设计，启用新图标、优化模板查找</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/427.htm" target="_blank" class="news-link">微软 2026 财年第 1 财季游戏业务亮红灯，Xbox 硬件销售收入同比暴跌 29%</a> [12] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/423.htm" target="_blank" class="news-link">消息称微软下一代 Xbox 放弃硬件独占，允许多家厂商制造</a> [15] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/414.htm" target="_blank" class="news-link">烧钱速度吓坏投资者：Meta、微软、谷歌 AI 支出暴增引“泡沫”质疑</a> [23] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>5</td>
+                    <td class="word">俄乌 乌克兰 俄罗斯 普京 泽连斯基</td>
+                    <td class="count">5</td>
+                    <td class="percentage">1.6%</td>
+                    <td class="titles"><div class='new-title'>🆕 [参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/10/30/569b8b3be68d436087b7af82a4215c56.html" target="_blank" class="news-link">菲佐：斯洛伐克不会资助乌克兰军事支出</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 11时42分</font></div><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/10/29/81bb524900994f2aab071cf3e25c960c.html" target="_blank" class="news-link">日媒：高市早苗拒绝停止进口俄罗斯能源</a> [7] <font color='grey'>- 11时42分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/10/29/8276823e63884e2f9aec42df3750213f.html" target="_blank" class="news-link">普京：“波塞冬”无人潜航器试验取得巨大成功</a> [8] <font color='grey'>- 11时42分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/10/29/c0aea7add1d24103a9ee104920fcf036.html" target="_blank" class="news-link">乌克兰无人机袭击克里米亚油库</a> [15] <font color='grey'>- 11时42分</font><br>[参考消息] <a href="https://ckxxapp.ckxx.net/pages/2025/10/29/84f809e97f2849e3a4f20ce7990a9c41.html" target="_blank" class="news-link">美媒：普京访印前，俄印签署飞机制造协议</a> [27] <font color='grey'>- 11时42分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>6</td>
+                    <td class="word">DeepSeek 梁文锋 deep research</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.64%</td>
+                    <td class="titles"><div class='new-title'>🆕 [V2EX] <a href="https://www.v2ex.com/t/1169336" target="_blank" class="news-link">一个 Hyperliquid 自动化交易机器人 - 跟单 nof1 Deepseek</a> <font color='red'><strong>[5]</strong></font> <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [稀土掘金] <a href="https://juejin.cn/post/7565728388402855971" target="_blank" class="news-link">有关DeepSeek-OCR的一些实践与思考</a> [28] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>7</td>
+                    <td class="word">马斯克 特斯拉 SpaceX Neuralink</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.64%</td>
+                    <td class="titles"><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/426.htm" target="_blank" class="news-link">维基百科用弹窗暗讽马斯克 Grokipedia：“我们不是机器创造出来的”</a> [13] <font color='grey'>- 11时42分</font></div><br>[稀土掘金] <a href="https://juejin.cn/post/7565403446372581426" target="_blank" class="news-link">马斯克「世界模拟器」首曝，1 天蒸馏人类 500 年驾驶经验！擎天柱同脑进化</a> [21] <font color='grey'>- 11时42分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>8</td>
+                    <td class="word">chatgpt openai GPT-4 o1 o3</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.64%</td>
+                    <td class="titles"><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/435.htm" target="_blank" class="news-link">2K 屏 + 7500mAh：iQOO Neo11 手机预约开启，赠耳机电源背包 + 各种保险</a> [7] <font color='grey'>- 11时42分</font></div><br><div class='new-title'>🆕 [财联社热门] <a href="https://www.cls.cn/detail/2185569" target="_blank" class="news-link">OpenAI据悉计划最早明年下半年提交上市申请 | 环球市场</a> [10] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>9</td>
+                    <td class="word">claude Anthropic</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.64%</td>
+                    <td class="titles">[V2EX] <a href="https://www.v2ex.com/t/1168812" target="_blank" class="news-link">分享一个自己用 Claude 开发的 WireGuard 图形界面管理工具 - WireVault</a> [27] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [稀土掘金] <a href="https://juejin.cn/post/7565734395886387252" target="_blank" class="news-link">开发一个自己的 claude code</a> [29] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>10</td>
+                    <td class="word">MCP Model Context Protocol</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.64%</td>
+                    <td class="titles">[稀土掘金] <a href="https://juejin.cn/post/7566299971643424819" target="_blank" class="news-link">老板问我：AI真能一键画广州旅游路线图？我用 MCP 现场开图</a> [14] <font color='grey'>- 11时42分</font><br><div class='new-title'>🆕 [稀土掘金] <a href="https://juejin.cn/post/7565071325772857378" target="_blank" class="news-link">Next.js 16 新特性：如何启用 MCP 与 AI 助手协作 🤖🤖🤖</a> [30] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>11</td>
+                    <td class="word">开源 open source github</td>
+                    <td class="count">2</td>
+                    <td class="percentage">0.64%</td>
+                    <td class="titles">[稀土掘金] <a href="https://juejin.cn/post/7566426081579155462" target="_blank" class="news-link">Flutter 也有类 React Flow 的节点流程编辑器，快来了解下刚刚开源的 vyuh_node_flow</a> [9] <font color='grey'>- 11时42分</font><br>[V2EX] <a href="https://www.v2ex.com/t/1169269" target="_blank" class="news-link">[开源][截图]一键表格、公式识别，这款好用的截图软件也太好用了吧</a> [10] <font color='grey'>- 11时42分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>12</td>
+                    <td class="word">字节</td>
+                    <td class="count">1</td>
+                    <td class="percentage">0.32%</td>
+                    <td class="titles">[稀土掘金] <a href="https://juejin.cn/post/7565176027909095470" target="_blank" class="news-link">我带的外包兄弟放弃大厂转正，薪资翻倍入职字节</a> <font color='red'><strong>[1]</strong></font> <font color='grey'>- 11时42分</font></td>
+                </tr>
+            
+                <tr>
+                    <td>13</td>
+                    <td class="word">AMD</td>
+                    <td class="count">1</td>
+                    <td class="percentage">0.32%</td>
+                    <td class="titles"><div class='new-title'>🆕 [IT之家] <a href="https://www.ithome.com/0/893/407.htm" target="_blank" class="news-link">AMD 发布 25.10.2 图形驱动：不再支持 Win10 系统，优化《战地 6》游戏</a> [30] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>14</td>
+                    <td class="word">cursor Cursor AI</td>
+                    <td class="count">1</td>
+                    <td class="percentage">0.32%</td>
+                    <td class="titles"><div class='new-title'>🆕 [V2EX] <a href="https://www.v2ex.com/t/1169354" target="_blank" class="news-link">Cursor Auto 模式我觉得是真不错，大多情况下都能够较好地完成任务，量也够大，比 Trae 的 Sonnet 4 要好用，下个月不会再续 Trae 了</a> <font color='red'><strong>[2]</strong></font> <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+                <tr>
+                    <td>15</td>
+                    <td class="word">中东 以色列 巴勒斯坦 伊朗</td>
+                    <td class="count">1</td>
+                    <td class="percentage">0.32%</td>
+                    <td class="titles"><div class='new-title'>🆕 [联合早报] <a href="https://www.zaochenbao.com/news/opinion/202510/3056067.html" target="_blank" class="news-link">什洛莫·本—阿米：西方“解放巴勒斯坦”运动于事无补</a> [25] <font color='grey'>- 11时42分</font></div></td>
+                </tr>
+            
+            </table>
+        
+            <div class="new-section">
+                <h3>🆕 本次新增热点新闻 (共 55 条)</h3>
+            <h4>财联社热门 (2 条)</h4><ul><li><a href="https://www.cls.cn/detail/2185393" target="_blank" class="news-link">AI伴侣引发争议！Character.AI将禁止未成年人与其聊天机器人对话</a> [8]</li><li><a href="https://www.cls.cn/detail/2185569" target="_blank" class="news-link">OpenAI据悉计划最早明年下半年提交上市申请 | 环球市场</a> [10]</li></ul><h4>凤凰网 (4 条)</h4><ul><li><a href="https://news.ifeng.com/c/8nrhIL4dt2o" target="_blank" class="news-link">特朗普：相信美中将达成协议，会带来令人兴奋的东西</a> <font color='red'><strong>[3]</strong></font></li><li><a href="https://news.ifeng.com/c/8nr4aV0B7Kq" target="_blank" class="news-link">特朗普称贸易协议“几乎敲定”，韩国确认对美投资2000亿美元</a> <font color='red'><strong>[4]</strong></font></li><li><a href="https://news.ifeng.com/c/8nrmtlqWVtM" target="_blank" class="news-link">美国民主党人报告：特朗普自我挖坑，给了中国底牌</a> <font color='red'><strong>[5]</strong></font></li><li><a href="https://news.ifeng.com/c/8nrJZ12ddrh" target="_blank" class="news-link">迎接特朗普，高市早苗笑了一天</a> [9]</li></ul><h4>V2EX (4 条)</h4><ul><li><a href="https://www.v2ex.com/t/1169354" target="_blank" class="news-link">Cursor Auto 模式我觉得是真不错，大多情况下都能够较好地完成任务，量也够大，比 Trae 的 Sonnet 4 要好用，下个月不会再续 Trae 了</a> <font color='red'><strong>[2]</strong></font></li><li><a href="https://www.v2ex.com/t/1169347" target="_blank" class="news-link">AI 能否与制造业结合？创意结合 Ai 再到线下生产？</a> <font color='red'><strong>[3]</strong></font></li><li><a href="https://www.v2ex.com/t/1169336" target="_blank" class="news-link">一个 Hyperliquid 自动化交易机器人 - 跟单 nof1 Deepseek</a> <font color='red'><strong>[5]</strong></font></li><li><a href="https://www.v2ex.com/t/1169286" target="_blank" class="news-link">tailscale 是真听劝呀， peer relay 来了</a> [8]</li></ul><h4>IT之家 (15 条)</h4><ul><li><a href="https://www.ithome.com/0/893/455.htm" target="_blank" class="news-link">Win10 / Win11 可继续装机：微软修复媒体创建工具 BUG，告别闪退与报错</a> <font color='red'><strong>[1]</strong></font></li><li><a href="https://www.ithome.com/0/893/450.htm" target="_blank" class="news-link">微软 Win11 十月可选更新修复“更新并关机”变重启 BUG</a> <font color='red'><strong>[2]</strong></font></li><li><a href="https://www.ithome.com/0/893/444.htm" target="_blank" class="news-link">最佳苹果开发者：微软 iOS 26 版 Office App 焕新液态玻璃设计，启用新图标、优化模板查找</a> <font color='red'><strong>[5]</strong></font></li><li><a href="https://www.ithome.com/0/893/435.htm" target="_blank" class="news-link">2K 屏 + 7500mAh：iQOO Neo11 手机预约开启，赠耳机电源背包 + 各种保险</a> [7]</li><li><a href="https://www.ithome.com/0/893/428.htm" target="_blank" class="news-link">三星互联网浏览器 PC 版登陆 Win11/10，支持跨设备同步与 Galaxy AI 功能</a> [11]</li><li><a href="https://www.ithome.com/0/893/427.htm" target="_blank" class="news-link">微软 2026 财年第 1 财季游戏业务亮红灯，Xbox 硬件销售收入同比暴跌 29%</a> [12]</li><li><a href="https://www.ithome.com/0/893/426.htm" target="_blank" class="news-link">维基百科用弹窗暗讽马斯克 Grokipedia：“我们不是机器创造出来的”</a> [13]</li><li><a href="https://www.ithome.com/0/893/424.htm" target="_blank" class="news-link">JetBrains IDE 迎来全新外观，Islands 主题开放试用</a> [14]</li><li><a href="https://www.ithome.com/0/893/423.htm" target="_blank" class="news-link">消息称微软下一代 Xbox 放弃硬件独占，允许多家厂商制造</a> [15]</li><li><a href="https://www.ithome.com/0/893/421.htm" target="_blank" class="news-link">三星半导体部门三季度营业利润同比飙升 80%，AI 需求推动存储芯片业务强劲复苏</a> [16]</li><li><a href="https://www.ithome.com/0/893/416.htm" target="_blank" class="news-link">2025 小鹏科技日定档 11 月 5 日，何小鹏称在物理 AI 领域涌现“惊喜能力”</a> [21]</li><li><a href="https://www.ithome.com/0/893/415.htm" target="_blank" class="news-link">华硕推 PE3000N 迷你电脑：首批搭载英伟达 T5000 模块，AI 算力 2070 FP4 TFLOPS</a> [22]</li><li><a href="https://www.ithome.com/0/893/414.htm" target="_blank" class="news-link">烧钱速度吓坏投资者：Meta、微软、谷歌 AI 支出暴增引“泡沫”质疑</a> [23]</li><li><a href="https://www.ithome.com/0/893/410.htm" target="_blank" class="news-link">“AI 黄仁勋”与英伟达 GTC 同时开直播，“假货”观看人数竟是正版 5 倍</a> [27]</li><li><a href="https://www.ithome.com/0/893/407.htm" target="_blank" class="news-link">AMD 发布 25.10.2 图形驱动：不再支持 Win10 系统，优化《战地 6》游戏</a> [30]</li></ul><h4>稀土掘金 (3 条)</h4><ul><li><a href="https://juejin.cn/post/7565728388402855971" target="_blank" class="news-link">有关DeepSeek-OCR的一些实践与思考</a> [28]</li><li><a href="https://juejin.cn/post/7565734395886387252" target="_blank" class="news-link">开发一个自己的 claude code</a> [29]</li><li><a href="https://juejin.cn/post/7565071325772857378" target="_blank" class="news-link">Next.js 16 新特性：如何启用 MCP 与 AI 助手协作 🤖🤖🤖</a> [30]</li></ul><h4>参考消息 (1 条)</h4><ul><li><a href="https://ckxxapp.ckxx.net/pages/2025/10/30/569b8b3be68d436087b7af82a4215c56.html" target="_blank" class="news-link">菲佐：斯洛伐克不会资助乌克兰军事支出</a> <font color='red'><strong>[2]</strong></font></li></ul><h4>联合早报 (7 条)</h4><ul><li><a href="https://www.zaochenbao.com/news/politics/202510/3056093.html" target="_blank" class="news-link">习特会前：特朗普突宣布指示战争部重启核武测试</a> <font color='red'><strong>[1]</strong></font></li><li><a href="https://www.zaochenbao.com/news/politics/202510/3056090.html" target="_blank" class="news-link">特朗普笑指习近平是强硬谈判者：这可不是好事</a> <font color='red'><strong>[4]</strong></font></li><li><a href="https://www.zaochenbao.com/news/politics/202510/3056089.html" target="_blank" class="news-link">习近平特朗普会晤开始</a> <font color='red'><strong>[5]</strong></font></li><li><a href="https://www.zaochenbao.com/news/politics/202510/3056088.html" target="_blank" class="news-link">特朗普在习特会前发文：G2即将召开</a> [6]</li><li><a href="https://www.zaochenbao.com/news/china/202510/3056077.html" target="_blank" class="news-link">富士康将用人形机器人为英伟达生产AI服务器</a> [16]</li><li><a href="https://www.zaochenbao.com/news/opinion/202510/3056068.html" target="_blank" class="news-link">陈国祥：美最高法院难为特朗普关税政策背书</a> [24]</li><li><a href="https://www.zaochenbao.com/news/opinion/202510/3056067.html" target="_blank" class="news-link">什洛莫·本—阿米：西方“解放巴勒斯坦”运动于事无补</a> [25]</li></ul><h4>卫星通讯社 (9 条)</h4><ul><li><a href="https://sputniknews.cn/20251030/1068140399.html" target="_blank" class="news-link">美国会议员：特朗普对印度征收关税是因为莫迪的行为，而不是因为进口俄罗斯石油</a> <font color='red'><strong>[1]</strong></font></li><li><a href="https://sputniknews.cn/20251030/1068139433.html" target="_blank" class="news-link">特朗普在与中国国家主席会晤时表示已就诸多问题达成共识</a> <font color='red'><strong>[2]</strong></font></li><li><a href="https://sputniknews.cn/20251030/1068138608.html" target="_blank" class="news-link">特朗普称习近平是强硬的谈判对手</a> <font color='red'><strong>[4]</strong></font></li><li><a href="https://sputniknews.cn/20251030/1068138421.html" target="_blank" class="news-link">美媒：台湾或更换“驻美代表”以保持特朗普的好感</a> <font color='red'><strong>[5]</strong></font></li><li><a href="https://sputniknews.cn/20251030/1068136755.html" target="_blank" class="news-link">特朗普称他已下令“对等”进行核武器试验</a> [8]</li><li><a href="https://sputniknews.cn/20251030/1068136456.html" target="_blank" class="news-link">习近平同特朗普会晤开始</a> [9]</li><li><a href="https://sputniknews.cn/20251030/1068135802.html" target="_blank" class="news-link">俄专家：特朗普走得太远，与中国的关系在与习近平会晤后不太可能改变</a> [14]</li><li><a href="https://sputniknews.cn/20251030/1068135385.html" target="_blank" class="news-link">特朗普称韩国将从美国购买许多天然气和石油</a> [18]</li><li><a href="https://sputniknews.cn/20251030/1068135278.html" target="_blank" class="news-link">特朗普称已同意韩国建造核潜艇</a> [19]</li></ul><h4>靠谱消息 (10 条)</h4><ul><li><a href="https://cn.nytimes.com/usa/20251030/trump-china-nvidia-chips-sales/" target="_blank" class="news-link">特朗普考虑向中国出售先进芯片，引发美国官员警惕</a> <font color='red'><strong>[3]</strong></font></li><li><a href="https://www.dw.com/zh/韩美达成贸易协议-特朗普同意共享核动力潜舰技术/a-74542566" target="_blank" class="news-link">韩美达成贸易协议 特朗普同意共享核动力潜舰技术</a> [7]</li><li><a href="https://www.bbc.com/zhongwen/articles/c0519g2506vo/simp" target="_blank" class="news-link">习近平和特朗普在韩国釜山会晤 贸易共识或将出炉</a> [8]</li><li><a href="https://cn.wsj.com/articles/%E9%87%91%E8%89%B2%E5%A4%96%E4%BA%A4-%E5%A6%82%E4%BD%95%E8%B4%AF%E7%A9%BF%E7%89%B9%E6%9C%97%E6%99%AE%E4%BA%9A%E6%B4%B2%E4%B9%8B%E8%A1%8C-5ae0ac10" target="_blank" class="news-link">“金色外交”如何贯穿特朗普亚洲之行</a> [9]</li><li><a href="https://cn.wsj.com/articles/%E7%89%B9%E6%9C%97%E6%99%AE%E5%91%8A%E8%AF%89%E4%BA%9A%E6%B4%B2%E7%9B%9F%E5%8F%8B-%E8%BD%AE%E5%88%B0%E4%BD%A0%E4%BB%AC%E5%A2%9E%E5%8A%A0%E5%86%9B%E8%B4%B9%E5%BC%80%E6%94%AF%E4%BA%86-c8bceb63" target="_blank" class="news-link">特朗普告诉亚洲盟友：轮到你们增加军费开支了</a> [11]</li><li><a href="https://cn.wsj.com/articles/trump-says-hes-barred-from-running-for-third-term-after-weeks-of-speculation-ce315d86" target="_blank" class="news-link">特朗普称宪法禁止他寻求第三个任期</a> [15]</li><li><a href="https://www.donga.com/cn/article/all/20251030/5931793/1" target="_blank" class="news-link">黄仁勋将赴庆州 称“将有让韩国国民欣喜的发布”</a> [16]</li><li><a href="https://cn.wsj.com/articles/trump-republican-midterm-convention-las-vegas-0c9c3bc5" target="_blank" class="news-link">特朗普顾问考虑在拉斯维加斯举办罕见的共和党中期选举政治大会</a> [18]</li><li><a href="https://cn.wsj.com/articles/nvidia-first-5-trillion-company-market-cap-65afa29d" target="_blank" class="news-link">英伟达成为首家市值达5万亿美元的公司</a> [23]</li><li><a href="https://www.donga.com/cn/article/all/20251030/5931640/1" target="_blank" class="news-link">“为制作赠特朗普金冠每日工作10小时……致力还原天马冢金冠神韵”</a> [28]</li></ul></div>
+        </body>
+        </html>
+        
